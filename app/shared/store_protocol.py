@@ -1,0 +1,13 @@
+from typing import Protocol
+
+from app.models import URLRecord
+
+
+class UrlStore(Protocol):
+    def create(self, url: str) -> URLRecord: ...
+
+    def get(self, code: str) -> URLRecord | None: ...
+
+    def increment_click(self, code: str) -> URLRecord | None: ...
+
+    def clear(self) -> None: ...
