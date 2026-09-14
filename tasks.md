@@ -9,7 +9,7 @@ Milestones M1-M11.
 - [X] M5 - Three scenario runs + operation logs
 - [X] M6 - Brownfield expiry + rate limits.
 - [X] M7 - SQLlite urlstore
-- [ ] M8 - Docker
+- [X] M8 - Docker
 - [ ] M9 - CI
 - [ ] M10 - README SUMMARY DEMO
 - [ ] M11 - Clone review

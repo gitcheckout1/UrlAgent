@@ -66,3 +66,9 @@ CLI exit codes: 0 done, 2 waiting human, 1 failed.
 
 - Trade-off: simple single-file durability; not multi-instance without shared DB
  
+ ## Deployment (Docker)
+ - `docker compose up --build` → api on :8000
+ - Volumes: ./data (SQLite), ./runs (orchestrator artifacts)
+ - Health: GET /health → {"status":"ok"}
+ - Same image runs uvicorn and `python -m orchestrator` via compose run
+ - Container binds `0.0.0.0:8000`; access from host at `http://localhost:8000`

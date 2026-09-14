@@ -1,0 +1,23 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    # Placeholders only. DATABASE_URL=sqlite:///./data/urls.db resolves to
+    # /app/data/urls.db in the container, which is the ./data volume below.
+    env_file:
+      - .env.example
+    volumes:
+      - ./data:/app/data
+      - ./runs:/app/runs
+    healthcheck:
+      # python instead of curl: the slim image has no curl.
+      test:
+        - CMD
+        - python
+        - -c
+        - import urllib.request; urllib.request.urlopen("http://localhost:8000/health")
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 5s

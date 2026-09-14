@@ -68,3 +68,10 @@ of it, and what was decided. Entries appended below as work happens.
 - Commit: b97c67e
 - AI: Cursor M7 — sqlite_store.py, store.py factory, routers use get_store().
 - Errors: none
+
+## M8 — Docker (2026-09-14)
+- Commands: docker compose up --build; curl localhost:8000/health; docker compose run --rm api pytest -q; 11× POST rate-limit curl
+- Result: health ok. 8 passed in container (2 Starlette warnings OK). Manual 429 on 11th POST. Redirect 302 in logs.
+- Commit: <hash>
+- AI: Cursor M8 — Dockerfile, compose, /health, .dockerignore, README snippet.
+- Errors: none

@@ -16,6 +16,13 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="UrlAgent", lifespan=lifespan)
 
+
+# Declared before the routers so the GET /{code} catch-all cannot swallow it.
+@app.get("/health")
+def health() -> dict[str, str]:
+    return {"status": "ok"}
+
+
 app.include_router(write_api.router)
 app.include_router(analytics_api.router)
 # Last: GET /{code} is a catch-all for single-segment paths.

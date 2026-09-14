@@ -1,0 +1,6 @@
+.venv
+.git
+runs
+__pycache__
+# Never bake real local secrets into an image.
+.env
