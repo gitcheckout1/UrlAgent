@@ -1,0 +1,4 @@
+# Read by orchestrator/runner.py as flat "key: value" lines, not by a YAML parser.
+id: brownfield-expiry
+type: brownfield
+description: Add 24h expiry and POST rate limit without rewriting the service.

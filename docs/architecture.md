@@ -1,6 +1,48 @@
 # Architecture
 
-Placeholder. A FastAPI service that shortens URLs (http and https schemes only) and redirects
-short codes back to their targets, with SQLite as the store. Alongside it sits a small SDLC
-orchestrator: a homemade Python DAG that runs ordered steps with no external workflow framework.
-Details to be filled in as the milestones in `tasks.md` land.
+## Application (one process)
+
+```
+                 +------------------+
+                 |   app/main.py    |
+                 +--------+---------+
+                          |
+    +---------------------+---------------------+
+    |                     |                     |
+ app/write           app/redirect          app/analytics
+ POST /v1/urls       GET /{code}            GET .../stats
+    |                     |                     |
+    +---------------------+---------------------+
+                          |
+                 app/shared (UrlStore)
+```
+
+Store: in-memory for M2; SQLite in M7.
+
+## SDLC orchestration graph
+
+```mermaid
+flowchart TD
+  req[Requirements] --> decomp[Decompose]
+  decomp --> design[Design]
+  design --> w[Implement write]
+  design --> r[Implement redirect]
+  design --> a[Implement analytics]
+  w --> join[Join]
+  r --> join
+  a --> join
+  join --> test[Run tests]
+  test --> docs[Docs]
+  docs --> rel[Release]
+  rel -->|exit 2| human[HUMAN approve release]
+  human --> sum[Summary]
+```
+
+Brownfield: insert **impact** after design, then implement nodes run after impact.
+Ambiguous: only req → decompose → design. stops after design ( no implement/join/release/summary path)
+
+## Run artifacts
+- runs/<id>/state.json — node_status, approvals
+- runs/<id>/trace.jsonl — audit log (one JSON per line)
+
+CLI exit codes: 0 done, 2 waiting human, 1 failed.

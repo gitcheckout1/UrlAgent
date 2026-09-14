@@ -2,9 +2,9 @@
 
 Milestones M1-M11.
 
-- [ ] M1 - Scaffold
-- [ ] M2 - v1-scope + app + tests
-- [ ] M3 - Orchestrator core
+- [X] M1 - Scaffold
+- [X] M2 - v1-scope + app + tests
+- [X] M3 - Orchestrator core
 - [ ] M4 - Orchestrator depth (pytest node, rollback)
 - [ ] M5 - Three scenario runs + operation logs
 - [ ] M6 - Brownfield expiry + rate limits.

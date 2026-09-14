@@ -1,0 +1,4 @@
+# Read by orchestrator/runner.py as flat "key: value" lines, not by a YAML parser.
+id: ambiguous-enterprise
+type: ambiguous
+description: Make it enterprise-ready.
