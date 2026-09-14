@@ -72,6 +72,6 @@ of it, and what was decided. Entries appended below as work happens.
 ## M8 — Docker (2026-09-14)
 - Commands: docker compose up --build; curl localhost:8000/health; docker compose run --rm api pytest -q; 11× POST rate-limit curl
 - Result: health ok. 8 passed in container (2 Starlette warnings OK). Manual 429 on 11th POST. Redirect 302 in logs.
-- Commit: <hash>
+- Commit: 4dcd5e9
 - AI: Cursor M8 — Dockerfile, compose, /health, .dockerignore, README snippet.
 - Errors: none
