@@ -75,3 +75,10 @@ of it, and what was decided. Entries appended below as work happens.
 - Commit: 4dcd5e9
 - AI: Cursor M8 — Dockerfile, compose, /health, .dockerignore, README snippet.
 - Errors: none
+
+## M9 — CI (2026-09-14)
+- Commands: git push .github/workflows/ci.yml; GitHub Actions tab
+- Result: CI green on ubuntu-latest; docker compose build + pytest 8 passed
+- Commit: <ci.yml commit hash>
+- AI: Cursor ci.yml — checkout, compose build, compose run pytest
+- Errors: PAT needed workflow scope on first push; fixed, push succeeded

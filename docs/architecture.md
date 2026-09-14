@@ -72,3 +72,6 @@ CLI exit codes: 0 done, 2 waiting human, 1 failed.
  - Health: GET /health → {"status":"ok"}
  - Same image runs uvicorn and `python -m orchestrator` via compose run
  - Container binds `0.0.0.0:8000`; access from host at `http://localhost:8000`
+
+## CI Enable (GitHub Actions)
+- CI: GitHub Actions runs `docker compose build` and `pytest -q` on push/PR
