@@ -65,6 +65,6 @@ of it, and what was decided. Entries appended below as work happens.
 ## M7 — SQLite (2026-09-13)
 - Commands: pytest -q; DATABASE_URL=sqlite:///./data/urls.db uvicorn + create link + restart + redirect
 - Result: 8 passed. Link survived restart (data/urls.db). Tests pin memory via set_store().
-- Commit: <hash>
+- Commit: b97c67e
 - AI: Cursor M7 — sqlite_store.py, store.py factory, routers use get_store().
 - Errors: none
