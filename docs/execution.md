@@ -50,6 +50,6 @@ of it, and what was decided. Entries appended below as work happens.
 ## M5 — Three scenarios (2026-09-13)
 - Commands: demo1, bf1, amb1 orchestrator runs (see docs/operations/)
 - Result: demo1/bf1 exit 2→0 at release; amb1 exit 2→0 at answers, no release gate; impact.md on bf1
-- Commit: 
+- Commit: 8e36c38
 - AI: none — I ran scenarios and typed ops logs
 - Errors: none
