@@ -21,6 +21,8 @@
 
 Runner writes WAIT_RELEASE.json or WAIT_ANSWERS.json and exits 2.
 
+![HITL gates overview](screenshots/architecture-hitl-gates.png)
+
 ## Policy
 safe_write allows: app/, tests/, docs/, scenarios/, runs/
 Denies: .env, paths with ..

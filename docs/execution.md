@@ -20,7 +20,7 @@ of it, and what was decided. Entries appended below as work happens.
 - Commit: 260fc05
 - Errors: None
 
-## M2b - 
+## M2
 - Commands: pytest tests/test_app.py -q -> 3 passed; 2 warnings; uvicorn + /docs smoke ok
 - Manual: javascript:/ftp:/file: -> 400; browser redirect OK; stats clicks ok
 - Commit: 31034c9
@@ -79,6 +79,6 @@ of it, and what was decided. Entries appended below as work happens.
 ## M9 — CI (2026-09-14)
 - Commands: git push .github/workflows/ci.yml; GitHub Actions tab
 - Result: CI green on ubuntu-latest; docker compose build + pytest 8 passed
-- Commit: <ci.yml commit hash>
+- Commit: 07dd440
 - AI: Cursor ci.yml — checkout, compose build, compose run pytest
 - Errors: PAT needed workflow scope on first push; fixed, push succeeded
