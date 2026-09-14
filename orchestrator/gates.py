@@ -19,5 +19,8 @@ def can_exit_release(state: RunState) -> bool:
 
 
 def ambiguous_requires_answers(run_dir: str | Path) -> bool:
-    """True while the human has not written answers.json into the run directory."""
-    return not (Path(run_dir) / "answers.json").exists()
+    """True while the human has not written a non-empty answers.json into the run directory."""
+    answers = Path(run_dir) / "answers.json"
+    if not answers.is_file():
+        return True
+    return not answers.read_text(encoding="utf-8").strip()

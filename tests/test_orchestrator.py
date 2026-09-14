@@ -9,7 +9,7 @@ from orchestrator.gates import can_enter_test
 from orchestrator.graph import GRAPHS, topological_order
 from orchestrator.models import NodeStatus, Scenario, new_run_state
 from orchestrator.nodes import test as node_test
-from orchestrator.runner import RunStatus, load_state, run_scenario
+from orchestrator.runner import RunStatus, approve_gate, load_state, run_scenario
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 RUN_ID = "test1"
@@ -62,6 +62,27 @@ def test_join_gate_blocks_test_until_implements_done():
 
     state.nodes[implements[-1]].status = NodeStatus.DONE
     assert can_enter_test(state) is True
+
+
+def test_ambiguous_requires_answers_file_not_just_approval(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    scenario = REPO_ROOT / "scenarios" / "ambiguous.yaml"
+    run_id = "amb_gate"
+
+    assert run_scenario(scenario, run_id) is RunStatus.WAITING_ANSWERS
+
+    # Approval alone must not open the gate.
+    approve_gate(run_id, "answers")
+    assert run_scenario(scenario, run_id) is RunStatus.WAITING_ANSWERS
+
+    # An empty answers.json must not count as answered.
+    answers = tmp_path / "runs" / run_id / "answers.json"
+    answers.write_text("", encoding="utf-8")
+    assert run_scenario(scenario, run_id) is RunStatus.WAITING_ANSWERS
+
+    # Non-empty file plus the existing approval completes the run.
+    answers.write_text('{"persistence": "memory"}', encoding="utf-8")
+    assert run_scenario(scenario, run_id) is RunStatus.COMPLETED
 
 
 def test_rollback_restores_app_on_forced_test_fail(tmp_path, monkeypatch):

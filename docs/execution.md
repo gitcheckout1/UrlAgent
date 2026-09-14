@@ -89,3 +89,11 @@ of it, and what was decided. Entries appended below as work happens.
 - Commit: c90826a
 - AI:Cursor drafted DEMO/README; facts and screenshots verified manually
 - Notes:DEMO walkthrough with 11 demo images + 5 architecture images; CI green on Actions
+
+## M11 - Cold smoke test (2026-09-14)
+
+- Commands:`docker compose up --build`; `docker compose run --rm api pytest -q`; orchestrator greenfield/brownfield/ambiguous; ambiguous negative path (`m11-amb-fixed` approve without file → WAITING_ANSWERS exit 2); happy path with `answers.json` → exit 0
+- Result:9 passed; ambiguous gate blocks until non-empty `answers.json` and approval; fix verified in Docker
+- Commit: 
+- AI: Cursor fixed design gate OR logic and empty-file check; regression test added
+- Errors: none

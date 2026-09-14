@@ -264,7 +264,8 @@ def run_scenario(scenario_path: str | Path, run_id: str) -> RunStatus:
                 continue
 
             if node == "design" and scenario is Scenario.AMBIGUOUS:
-                if ambiguous_requires_answers(run_dir) and not state.approvals.get("answers"):
+                # Both are required: a non-empty answers.json and a human approval.
+                if ambiguous_requires_answers(run_dir) or not state.approvals.get("answers"):
                     _write_wait_marker(
                         run_dir,
                         WAIT_ANSWERS_FILE,
@@ -373,10 +374,8 @@ def run_status(run_id: str) -> RunStatus:
     # Reuse the same gates the runner uses, so status cannot disagree with a run.
     if (run_dir / WAIT_RELEASE_FILE).exists() and not can_exit_release(state):
         return RunStatus.WAITING_RELEASE
-    if (
-        (run_dir / WAIT_ANSWERS_FILE).exists()
-        and ambiguous_requires_answers(run_dir)
-        and not state.approvals.get("answers")
+    if (run_dir / WAIT_ANSWERS_FILE).exists() and (
+        ambiguous_requires_answers(run_dir) or not state.approvals.get("answers")
     ):
         return RunStatus.WAITING_ANSWERS
     return RunStatus.INCOMPLETE

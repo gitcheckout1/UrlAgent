@@ -1,4 +1,4 @@
 # Read by orchestrator/runner.py as flat "key: value" lines, not by a YAML parser.
-id: gf-001
+id: greenfield-demo
 type: greenfield
-description: Build v1 URL shortener with write, redirect and analytics
+description: Build v1 URL shortener with create,  redirect and stats APIs
