@@ -9,6 +9,7 @@ EXIT_CODES = {
     RunStatus.WAITING_RELEASE: 2,
     RunStatus.WAITING_ANSWERS: 2,
     RunStatus.FAILED: 1,
+    RunStatus.STOPPED: 1,
     RunStatus.INCOMPLETE: 1,
 }
 

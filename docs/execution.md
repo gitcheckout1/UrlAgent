@@ -36,3 +36,12 @@ of it, and what was decided. Entries appended below as work happens.
 - AI: Cursor M3 parts 1-4; minimal YAML parser; no pyYAML.
 - Errors: none
  
+ ## M4 Orchestrator depth(2026-09-13)
+
+ - Commands: python -m orchestrator run scenarios/greenfield.yaml --run-id test1 (exit 2, WAITING_RELEASE); approve --gate release --run-id test1; run again (exit 0); pytest -q; pytest tests/test_orchestrator.py -q; pytest tests/test_orchestrator.py -q -k rollback
+
+- Result: greenfield HITL still works (2 → 0). SUMMARY.md has duration_s, success true, mttr_s N/A; summary_metrics in trace.jsonl (retry_count 0, rollback_count 0). pytest: 6 passed (2 Starlette warnings OK); orchestrator tests 3 passed; rollback test 1 passed.
+
+- Commit: <hash>
+- AI: Cursor M4 — real pytest tests/test_app.py, snapshot/restore, 2 test attempts then STOPPED, metrics in SUMMARY + trace; cli.py STOPPED exit 1.
+- Errors: none

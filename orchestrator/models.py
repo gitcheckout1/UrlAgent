@@ -33,6 +33,8 @@ class RunState(BaseModel):
     # Human-only gates, keyed by gate name. Only an explicit human approve
     # command may set one to True; never default or infer them.
     approvals: dict[str, bool] = Field(default_factory=dict)
+    retry_count: int = 0
+    rollback_count: int = 0
 
     def status_of(self, name: str) -> NodeStatus | None:
         node = self.nodes.get(name)

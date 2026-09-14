@@ -30,3 +30,15 @@ Denies: .env, paths with ..
 - No server-side fetch of target URLs
 - Secrets in env only; never log tokens or full URLs
 
+## Retry and rollback
+- Snapshot app/ to runs/<run-id>/snapshot/ before first implement_* node (once per run, not on retry)
+- Test node runs real `pytest -q tests/test_app.py` (scoped to app tests, not orchestrator tests)
+- On failure: restore snapshot, increment rollback_count in state + trace
+- Max 2 test attempts (1 retry), then STOPPED (exit 1)
+ 
+## Metrics
+Written to runs/<run-id>/SUMMARY.md: duration_s, retry_count, rollback_count, success, mttr_s (or N/A).
+Also emitted as `summary_metrics` in trace.jsonl.
+Human wait at release/answers gates is excluded from duration_s and is not MTTR.
+
+
