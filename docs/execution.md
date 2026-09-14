@@ -53,3 +53,10 @@ of it, and what was decided. Entries appended below as work happens.
 - Commit: 8e36c38
 - AI: none — I ran scenarios and typed ops logs
 - Errors: none
+
+## M6 — Brownfield product (2026-09-14)
+- Commands: pytest -q; pytest tests/test_app.py -q
+- Result: 8 passed (2 Starlette warnings OK). New tests: test_expiry_behavior_brownfield, test_eleventh_post_returns_429. Six files only per runs/bf1/impact.md.
+- Commit: <hash>
+- AI: Cursor M6 — ttl in store create(), 410 skips click, RateLimiter in write/api.py; stats still 200 after expiry (analytics out of scope).
+- Errors: none

@@ -30,5 +30,5 @@
 - No auth in v1; rate limit ( M6) is abuse protection only
 
 ## Brownfield (added M6)
-- Links expire 24h -> 410
-- 10 POSTS per minute -> 429
+- Links expire 24h -> 410 on redirect
+- 10 POSTS per minute -> 429 on 11th

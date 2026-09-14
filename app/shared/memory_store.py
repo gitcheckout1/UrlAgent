@@ -1,6 +1,6 @@
 import secrets
 import string
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from app.models import URLRecord
 
@@ -20,11 +20,13 @@ class MemoryUrlStore:
                 return code
         raise RuntimeError("could not generate an unused short code")
 
-    def create(self, url: str) -> URLRecord:
+    def create(self, url: str, ttl: timedelta | None = None) -> URLRecord:
+        created_at = datetime.now(timezone.utc)
         record = URLRecord(
             code=self._new_code(),
             url=url,
-            created_at=datetime.now(timezone.utc),
+            created_at=created_at,
+            expires_at=None if ttl is None else created_at + ttl,
         )
         self._records[record.code] = record
         return record
