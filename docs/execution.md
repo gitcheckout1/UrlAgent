@@ -94,6 +94,6 @@ of it, and what was decided. Entries appended below as work happens.
 
 - Commands:`docker compose up --build`; `docker compose run --rm api pytest -q`; orchestrator greenfield/brownfield/ambiguous; ambiguous negative path (`m11-amb-fixed` approve without file → WAITING_ANSWERS exit 2); happy path with `answers.json` → exit 0
 - Result:9 passed; ambiguous gate blocks until non-empty `answers.json` and approval; fix verified in Docker
-- Commit: 
+- Commit: c043db8
 - AI: Cursor fixed design gate OR logic and empty-file check; regression test added
 - Errors: none

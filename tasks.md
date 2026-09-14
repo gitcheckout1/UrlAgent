@@ -12,4 +12,4 @@ Milestones M1-M11.
 - [X] M8 - Docker
 - [X] M9 - CI
 - [X] M10 - README SUMMARY DEMO
-- [ ] M11 - Clone review
+- [X] M11 - Clone review
