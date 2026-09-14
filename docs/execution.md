@@ -32,7 +32,7 @@ of it, and what was decided. Entries appended below as work happens.
 
 - Commands: python -m orchestrator run scenarios/greenfield.yaml --run-id test1; python -m orchestrator approve --gate release --run-id test1; python -m orchestrator run scenarios/greenfield.yaml --run-id test1;pytest tests/test_orchestrator.py -q; pytest -q;
 - Result: WATING_RELEASE / exit 2; WAIT_RELEASE.json prresent; approvals {} before approve; exit 0 after approve+resume. 1 orchestrator test, 4 total passed. 2 StarletteDeprecationWarning(OK).
-- Commit
+- Commit : 02caaab
 - AI: Cursor M3 parts 1-4; minimal YAML parser; no pyYAML.
 - Errors: none
  
