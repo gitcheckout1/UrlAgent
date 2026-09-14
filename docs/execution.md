@@ -42,6 +42,6 @@ of it, and what was decided. Entries appended below as work happens.
 
 - Result: greenfield HITL still works (2 → 0). SUMMARY.md has duration_s, success true, mttr_s N/A; summary_metrics in trace.jsonl (retry_count 0, rollback_count 0). pytest: 6 passed (2 Starlette warnings OK); orchestrator tests 3 passed; rollback test 1 passed.
 
-- Commit: <hash>
+- Commit: 54234ef
 - AI: Cursor M4 — real pytest tests/test_app.py, snapshot/restore, 2 test attempts then STOPPED, metrics in SUMMARY + trace; cli.py STOPPED exit 1.
 - Errors: none
