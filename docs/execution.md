@@ -45,3 +45,11 @@ of it, and what was decided. Entries appended below as work happens.
 - Commit: 54234ef
 - AI: Cursor M4 — real pytest tests/test_app.py, snapshot/restore, 2 test attempts then STOPPED, metrics in SUMMARY + trace; cli.py STOPPED exit 1.
 - Errors: none
+
+
+## M5 — Three scenarios (2026-09-13)
+- Commands: demo1, bf1, amb1 orchestrator runs (see docs/operations/)
+- Result: demo1/bf1 exit 2→0 at release; amb1 exit 2→0 at answers, no release gate; impact.md on bf1
+- Commit: 
+- AI: none — I ran scenarios and typed ops logs
+- Errors: none
