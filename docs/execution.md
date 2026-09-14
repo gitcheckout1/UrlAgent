@@ -82,3 +82,10 @@ of it, and what was decided. Entries appended below as work happens.
 - Commit: 07dd440
 - AI: Cursor ci.yml — checkout, compose build, compose run pytest
 - Errors: PAT needed workflow scope on first push; fixed, push succeeded
+
+## M10 — README, SUMMARY, DEMO (2026-09-14)
+- Commands:Final `pytest -q` (8 passed); reviewed greenfield demo1 exit 2 → approve → exit 0
+- Result:README.md, SUMMARY.md, DEMO.md; docs/architecture.md + docs/agent.md with diagram screenshots; `docs/screenshots/` (demo + architecture PNGs)
+- Commit: c90826a
+- AI:Cursor drafted DEMO/README; facts and screenshots verified manually
+- Notes:DEMO walkthrough with 11 demo images + 5 architecture images; CI green on Actions

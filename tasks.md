@@ -11,5 +11,5 @@ Milestones M1-M11.
 - [X] M7 - SQLlite urlstore
 - [X] M8 - Docker
 - [X] M9 - CI
-- [ ] M10 - README SUMMARY DEMO
+- [X] M10 - README SUMMARY DEMO
 - [ ] M11 - Clone review
