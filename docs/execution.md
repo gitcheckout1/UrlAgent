@@ -54,9 +54,17 @@ of it, and what was decided. Entries appended below as work happens.
 - AI: none — I ran scenarios and typed ops logs
 - Errors: none
 
-## M6 — Brownfield product (2026-09-14)
+## M6 — Brownfield product (2026-09-13)
 - Commands: pytest -q; pytest tests/test_app.py -q
 - Result: 8 passed (2 Starlette warnings OK). New tests: test_expiry_behavior_brownfield, test_eleventh_post_returns_429. Six files only per runs/bf1/impact.md.
 - Commit: bec55aa
 - AI: Cursor M6 — ttl in store create(), 410 skips click, RateLimiter in write/api.py; stats still 200 after expiry (analytics out of scope).
+- Errors: none
+
+
+## M7 — SQLite (2026-09-13)
+- Commands: pytest -q; DATABASE_URL=sqlite:///./data/urls.db uvicorn + create link + restart + redirect
+- Result: 8 passed. Link survived restart (data/urls.db). Tests pin memory via set_store().
+- Commit: <hash>
+- AI: Cursor M7 — sqlite_store.py, store.py factory, routers use get_store().
 - Errors: none

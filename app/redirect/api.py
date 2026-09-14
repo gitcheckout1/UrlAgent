@@ -3,7 +3,7 @@ import logging
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import RedirectResponse
 
-from app.shared.memory_store import store
+from app.shared.store import get_store
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -11,6 +11,7 @@ router = APIRouter()
 
 @router.get("/{code}")
 def redirect_to_url(code: str) -> RedirectResponse:
+    store = get_store()
     record = store.get(code)
     if record is None:
         logger.info("redirect code=%s status=404", code)

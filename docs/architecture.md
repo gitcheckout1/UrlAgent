@@ -46,3 +46,23 @@ Ambiguous: only req → decompose → design. stops after design ( no implement/
 - runs/<id>/trace.jsonl — audit log (one JSON per line)
 
 CLI exit codes: 0 done, 2 waiting human, 1 failed.
+
+## Brownfield behavior (product)
+
+- `expires_at = created_at + 24h`; expired GET `/{code}` → 410 Gone (no click increment)
+
+- Rate limit: 10 POST `/v1/urls` per 60s per process → 429; global window, not per-IP
+
+- `impact.md` lists files before patch; stats endpoint unchanged on expiry
+ 
+
+ ## Persistence
+
+- `UrlStore` protocol; implementations: in-memory (tests) and SQLite (`./data/urls.db`)
+
+- `DATABASE_URL=sqlite:///./data/urls.db` selects SQLite; unset → memory
+
+- `data/` created when SQLite store is first used (lazy init)
+
+- Trade-off: simple single-file durability; not multi-instance without shared DB
+ 

@@ -8,7 +8,7 @@ Milestones M1-M11.
 - [X] M4 - Orchestrator depth (pytest node, rollback)
 - [X] M5 - Three scenario runs + operation logs
 - [X] M6 - Brownfield expiry + rate limits.
-- [ ] M7 - SQLlite urlstore
+- [X] M7 - SQLlite urlstore
 - [ ] M8 - Docker
 - [ ] M9 - CI
 - [ ] M10 - README SUMMARY DEMO

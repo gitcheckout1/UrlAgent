@@ -6,7 +6,7 @@ from datetime import timedelta
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, HttpUrl, TypeAdapter, ValidationError
 
-from app.shared.memory_store import store
+from app.shared.store import get_store
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -64,6 +64,6 @@ def create_url(payload: CreateUrlRequest) -> CreateUrlResponse:
     except ValidationError:
         raise HTTPException(status_code=400, detail="url must be an http or https URL")
 
-    record = store.create(str(url), ttl=LINK_TTL)
+    record = get_store().create(str(url), ttl=LINK_TTL)
     logger.info("created code=%s", record.code)
     return CreateUrlResponse(code=record.code, url=record.url)

@@ -5,6 +5,7 @@ from fastapi.testclient import TestClient
 
 from app.main import app
 from app.shared.memory_store import store
+from app.shared.store import set_store
 from app.write.api import LINK_TTL, RATE_LIMIT_MAX, ratelimit
 
 client = TestClient(app)
@@ -12,6 +13,8 @@ client = TestClient(app)
 
 @pytest.fixture(autouse=True)
 def clear_store():
+    # Pin the memory store so tests ignore any DATABASE_URL in the environment.
+    set_store(store)
     store.clear()
     # Module-level window, so it has to be cleared between tests too.
     ratelimit.reset()
